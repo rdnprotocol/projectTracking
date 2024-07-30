@@ -170,8 +170,105 @@ export const LeftLayout = () => {
                     </div>
                   </div>
                 </TabsContent>
-                <TabsContent value="Income">
-                  Change your password here.
+                <TabsContent value="Income" className="flex flex-col  gap-8">
+                  <Input
+                    id="Amount"
+                    type="number"
+                    defaultValue="Amount0"
+                    className="col-span-3"
+                    placeholder="₮ 0.000"
+                  />
+                  <div>
+                    <Select id="select">
+                      <Label
+                        htmlFor="select"
+                        className="text-left text-sm font-normal"
+                      >
+                        Category
+                      </Label>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Choose" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="light">Light</SelectItem>
+                        <SelectItem value="dark">Dark</SelectItem>
+                        <SelectItem value="system">System</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex  gap-4">
+                    <div className="flex flex-col gap-2">
+                      {" "}
+                      <Label
+                        htmlFor="Date"
+                        className="text-left text-sm font-normal"
+                      >
+                        date
+                      </Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-[180px] justify-start text-left font-normal",
+                              !date && "text-muted-foreground"
+                            )}
+                          >
+                            {date ? (
+                              format(date, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <IoMdArrowDropdown className="ml-6 h-4 w-4" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <Calendar
+                            mode="single"
+                            selected={date}
+                            onSelect={setDate}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {" "}
+                      <Label
+                        htmlFor="Date"
+                        className="text-left text-sm font-normal"
+                      >
+                        date
+                      </Label>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant={"outline"}
+                            className={cn(
+                              "w-[180px] justify-start text-left font-normal",
+                              !date && "text-muted-foreground"
+                            )}
+                          >
+                            {date ? (
+                              format(date, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <IoMdArrowDropdown className="ml-6 h-4 w-4" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <Calendar
+                            mode="single"
+                            //tsag awah
+                            selected={date.getHours()}
+                            onSelect={setDate}
+                            initialFocus
+                          />
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                  </div>
                 </TabsContent>
               </Tabs>
 
